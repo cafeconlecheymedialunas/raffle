@@ -1,16 +1,16 @@
 <?php
 /**
- * Main Starter_Plugin Class
+ * Main Raffle_Plugin Class
  *
- * @class Starter_Plugin
+ * @class Raffle_Plugin
  * @version	1.0.0
  * @since 1.0.0
- * @package	Starter_Plugin
+ * @package	Raffle_Plugin
  * @author Matty
  */
-final class Starter_Plugin {
+final class Raffle_Plugin {
 	/**
-	 * Starter_Plugin The single instance of Starter_Plugin.
+	 * Raffle_Plugin The single instance of Raffle_Plugin.
 	 * @var 	object
 	 * @access  private
 	 * @since 	1.0.0
@@ -90,30 +90,30 @@ final class Starter_Plugin {
 	 * @since   1.0.0
 	 */
 	public function __construct () {
-		$this->token       = 'starter-plugin';
+		$this->token       = 'raffle';
 		$this->plugin_url  = plugin_dir_url( __FILE__ );
 		$this->plugin_path = plugin_dir_path( __FILE__ );
 		$this->version     = '1.0.0';
 
 		// Admin - Start
-		require_once 'class-starter-plugin-settings.php';
-			$this->settings = Starter_Plugin_Settings::instance();
+		require_once 'class-raffle-settings.php';
+			$this->settings = Raffle_Plugin_Settings::instance();
 
 		if ( is_admin() ) {
-			require_once 'class-starter-plugin-admin.php';
-			$this->admin = Starter_Plugin_Admin::instance();
+			require_once 'class-raffle-admin.php';
+			$this->admin = Raffle_Plugin_Admin::instance();
 		}
 		// Admin - End
 
 		// Post Types - Start
-		require_once 'class-starter-plugin-post-type.php';
-		require_once 'class-starter-plugin-taxonomy.php';
+		require_once 'class-raffle-post-type.php';
+		require_once 'class-raffle-taxonomy.php';
 
 		// Register an example post type. To register other post types, duplicate this line.
-		$this->post_types['thing'] = new Starter_Plugin_Post_Type( 'thing', __( 'Thing', 'starter-plugin' ), __( 'Things', 'starter-plugin' ), array( 'menu_icon' => 'dashicons-carrot' ) );
+		$this->post_types['thing'] = new Raffle_Plugin_Post_Type( 'thing', __( 'Thing', 'raffle' ), __( 'Things', 'raffle' ), array( 'menu_icon' => 'dashicons-carrot' ) );
 
 		// Register an example taxonomy, connected to our post type. To register other taxonomies, duplicate this line.
-		$this->taxonomies['thing-category'] = new Starter_Plugin_Taxonomy();
+		$this->taxonomies['thing-category'] = new Raffle_Plugin_Taxonomy();
 		// Post Types - End
 		register_activation_hook( __FILE__, array( $this, 'install' ) );
 
@@ -121,14 +121,14 @@ final class Starter_Plugin {
 	}
 
 	/**
-	 * Main Starter_Plugin Instance
+	 * Main Raffle_Plugin Instance
 	 *
-	 * Ensures only one instance of Starter_Plugin is loaded or can be loaded.
+	 * Ensures only one instance of Raffle_Plugin is loaded or can be loaded.
 	 *
 	 * @since 1.0.0
 	 * @static
-	 * @see Starter_Plugin()
-	 * @return Main Starter_Plugin instance
+	 * @see Raffle_Plugin()
+	 * @return Main Raffle_Plugin instance
 	 */
 	public static function instance () {
 		if ( is_null( self::$instance ) ) {
@@ -143,7 +143,7 @@ final class Starter_Plugin {
 	 * @since   1.0.0
 	 */
 	public function load_plugin_textdomain() {
-		load_plugin_textdomain( 'starter-plugin', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'raffle', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**

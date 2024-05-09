@@ -1,11 +1,11 @@
 {
-    "name": "mattyza/starter-plugin",
-    "description": "A starter WordPress plugin, ready for your next project.",
+    "name": "mattyza/raffle",
+    "description": "A raffle  WordPress plugin, ready for your next project.",
     "keywords": [
         "wordpress"
     ],
     "type": "wordpress-plugin",
-    "homepage": "https://github.com/mattyza/starter-plugin",
+    "homepage": "https://github.com/mattyza/raffle",
     "license": "GPL-2.0+",
     "authors": [
         {
@@ -14,8 +14,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/mattyza/starter-plugin/issues",
-        "source": "https://github.com/mattyza/starter-plugin/"
+        "issues": "https://github.com/mattyza/raffle/issues",
+        "source": "https://github.com/mattyza/raffle/"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "*",

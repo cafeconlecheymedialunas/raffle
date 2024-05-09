@@ -4,17 +4,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Starter Plugin Post Type Class
+ * Raffle  Plugin Post Type Class
  *
- * All functionality pertaining to post types in Starter Plugin.
+ * All functionality pertaining to post types in Raffle  Plugin.
  *
  * @package WordPress
- * @subpackage Starter_Plugin
+ * @subpackage Raffle_Plugin
  * @category Plugin
  * @author Matty
  * @since 1.0.0
  */
-class Starter_Plugin_Post_Type {
+class Raffle_Plugin_Post_Type {
 	/**
 	 * The post type token.
 	 * @access public
@@ -84,24 +84,24 @@ class Starter_Plugin_Post_Type {
 		$labels = array(
 			'name'               => $this->plural,
 			'singular_name'      => $this->singular,
-			'add_new'            => _x( 'Add New', 'thing', 'starter-plugin' ), /* translators: add new post */
-			'add_new_item'       => sprintf( __( 'Add New %s', 'starter-plugin' ), $this->singular ), /* translators: 'Add new' label for post type entry */
-			'edit_item'          => sprintf( __( 'Edit %s', 'starter-plugin' ), $this->singular ), /* translators: 'Edit' label for post type entry */
-			'new_item'           => sprintf( __( 'New %s', 'starter-plugin' ), $this->singular ), /* translators: 'New' label for post type entry containing post type singular name */
-			'all_items'          => sprintf( __( 'All %s', 'starter-plugin' ), $this->plural ), /* translators: 'All' label for post type entries */
-			'view_item'          => sprintf( __( 'View %s', 'starter-plugin' ), $this->singular ), /* translators: 'View' label for post type entry containing singular name */
-			'search_items'       => sprintf( __( 'Search %s', 'starter-plugin' ), $this->plural ), /* translators: 'Search' label for post type entry containing plural name */
-			'not_found'          => sprintf( __( 'No %s Found', 'starter-plugin' ), $this->plural ), /* translators: 'Not found' label for post type entry containing plural name */
-			'not_found_in_trash' => sprintf( __( 'No %s Found In Trash', 'starter-plugin' ), $this->plural ), /* translators: 'Not found' label for post type entry containing plural name, looking at trash */
+			'add_new'            => _x( 'Add New', 'thing', 'raffle' ), /* translators: add new post */
+			'add_new_item'       => sprintf( __( 'Add New %s', 'raffle' ), $this->singular ), /* translators: 'Add new' label for post type entry */
+			'edit_item'          => sprintf( __( 'Edit %s', 'raffle' ), $this->singular ), /* translators: 'Edit' label for post type entry */
+			'new_item'           => sprintf( __( 'New %s', 'raffle' ), $this->singular ), /* translators: 'New' label for post type entry containing post type singular name */
+			'all_items'          => sprintf( __( 'All %s', 'raffle' ), $this->plural ), /* translators: 'All' label for post type entries */
+			'view_item'          => sprintf( __( 'View %s', 'raffle' ), $this->singular ), /* translators: 'View' label for post type entry containing singular name */
+			'search_items'       => sprintf( __( 'Search %s', 'raffle' ), $this->plural ), /* translators: 'Search' label for post type entry containing plural name */
+			'not_found'          => sprintf( __( 'No %s Found', 'raffle' ), $this->plural ), /* translators: 'Not found' label for post type entry containing plural name */
+			'not_found_in_trash' => sprintf( __( 'No %s Found In Trash', 'raffle' ), $this->plural ), /* translators: 'Not found' label for post type entry containing plural name, looking at trash */
 			'parent_item_colon'  => '',
 			'menu_name'          => $this->plural,
 		);
 
 		$single_slug = sanitize_title_with_dashes( $this->singular );
-		$single_slug = apply_filters( 'starter_plugin_single_slug', $single_slug );
+		$single_slug = apply_filters( 'raffle_plugin_single_slug', $single_slug );
 
 		$archive_slug = sanitize_title_with_dashes( $this->plural );
-		$archive_slug = apply_filters( 'starter_plugin_archive_slug', $archive_slug );
+		$archive_slug = apply_filters( 'raffle_plugin_archive_slug', $archive_slug );
 
 		$defaults = array(
 			'labels'             => $labels,
@@ -158,7 +158,7 @@ class Starter_Plugin_Post_Type {
 	 * @return void
 	 */
 	public function register_custom_column_headings ( $defaults ) {
-		$new_columns = array( 'image' => __( 'Image', 'starter-plugin' ) );
+		$new_columns = array( 'image' => __( 'Image', 'raffle' ) );
 
 		$last_item = array();
 
@@ -194,22 +194,22 @@ class Starter_Plugin_Post_Type {
 		$messages[ $this->post_type ] = array(
 			0  => '', // Unused. Messages start at index 1.
 			/* translators: 'Updated' notice for post type entry, 1: opening anchor, 2: closing anchor, 3: singular name, 4: lowercase singular name */
-			1  => sprintf( __( '%3$s updated. %1$sView %4$s%2$s', 'starter-plugin' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', '</a>', $this->singular, strtolower( $this->singular ) ),
-			2  => __( 'Custom field updated.', 'starter-plugin' ),
-			3  => __( 'Custom field deleted.', 'starter-plugin' ),
+			1  => sprintf( __( '%3$s updated. %1$sView %4$s%2$s', 'raffle' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', '</a>', $this->singular, strtolower( $this->singular ) ),
+			2  => __( 'Custom field updated.', 'raffle' ),
+			3  => __( 'Custom field deleted.', 'raffle' ),
 			/* translators: %s: date and time of the revision */
-			4  => sprintf( __( '%s updated.', 'starter-plugin' ), $this->singular ),
+			4  => sprintf( __( '%s updated.', 'raffle' ), $this->singular ),
 			/* translators: 1: singular name. 2: Revision post title. */
-			5  => isset( $_GET['revision'] ) ? sprintf( __( '%1$s restored to revision from %2$s', 'starter-plugin' ), $this->singular, wp_post_revision_title( (int) $_GET['revision'], false ) ) : false, /* phpcs:ignore */
+			5  => isset( $_GET['revision'] ) ? sprintf( __( '%1$s restored to revision from %2$s', 'raffle' ), $this->singular, wp_post_revision_title( (int) $_GET['revision'], false ) ) : false, /* phpcs:ignore */
 			/* translators: 1: singular name. 2: lowercase singular name. 3: opening anchor. 4: closing anchor. */
-			6  => sprintf( __( '%1$s published. %3$sView %2$s%4$s', 'starter-plugin' ), $this->singular, strtolower( $this->singular ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', '</a>' ),
+			6  => sprintf( __( '%1$s published. %3$sView %2$s%4$s', 'raffle' ), $this->singular, strtolower( $this->singular ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', '</a>' ),
 			/* translators: 1: singular name. */
-			7  => sprintf( __( '%s saved.', 'starter-plugin' ), $this->singular ),
+			7  => sprintf( __( '%s saved.', 'raffle' ), $this->singular ),
 			/* translators: 1: singular name. 2: lowercase singular name. 3: opening anchor. 4: closing anchor. */
-			8  => sprintf( __( '%1$s submitted. %2$sPreview %3$s%4$s', 'starter-plugin' ), $this->singular, strtolower( $this->singular ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', '</a>' ),
+			8  => sprintf( __( '%1$s submitted. %2$sPreview %3$s%4$s', 'raffle' ), $this->singular, strtolower( $this->singular ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', '</a>' ),
 			9  => sprintf(
 				/* translators: 1: singular name. 2: lowercase singular name. 3: scheduled date wrapped in "strong" tags. 4: opening anchor. 5: closing anchor. */
-				__( '%1$s scheduled for: %3$s. %4$sPreview %2$s%5$s', 'starter-plugin' ),
+				__( '%1$s scheduled for: %3$s. %4$sPreview %2$s%5$s', 'raffle' ),
 				$this->singular,
 				strtolower( $this->singular ),
 				'<strong>' . date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ) . '</strong>',
@@ -217,7 +217,7 @@ class Starter_Plugin_Post_Type {
 				'</a>'
 			),
 			/* translators: 1: singular name. 2: lowercase singular name. 3: opening anchor. 4: closing anchor. */
-			10 => sprintf( __( '%1$s draft updated. %2$sPreview %3$s%4$s', 'starter-plugin' ), $this->singular, strtolower( $this->singular ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', '</a>' ),
+			10 => sprintf( __( '%1$s draft updated. %2$sPreview %3$s%4$s', 'raffle' ), $this->singular, strtolower( $this->singular ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', '</a>' ),
 		);
 
 		return $messages;
@@ -230,7 +230,7 @@ class Starter_Plugin_Post_Type {
 	 * @return void
 	 */
 	public function meta_box_setup () {
-		add_meta_box( $this->post_type . '-data', __( 'Thing Details', 'starter-plugin' ), array( $this, 'meta_box_content' ), $this->post_type, 'side', 'high' );
+		add_meta_box( $this->post_type . '-data', __( 'Thing Details', 'raffle' ), array( $this, 'meta_box_content' ), $this->post_type, 'side', 'high' );
 	}
 
 	/**
@@ -246,7 +246,7 @@ class Starter_Plugin_Post_Type {
 
 		$html = '';
 
-		$html .= '<input type="hidden" name="starter_plugin_' . $this->post_type . '_noonce" id="starter-plugin_' . $this->post_type . '_noonce" value="' . wp_create_nonce( plugin_basename( dirname( Starter_Plugin()->plugin_path ) ) ) . '" />';
+		$html .= '<input type="hidden" name="raffle_plugin_' . $this->post_type . '_noonce" id="raffle_' . $this->post_type . '_noonce" value="' . wp_create_nonce( plugin_basename( dirname( Raffle_Plugin()->plugin_path ) ) ) . '" />';
 
 		if ( 0 < count( $field_data ) ) :
 			foreach ( $field_data as $k => $v ) :
@@ -278,7 +278,7 @@ class Starter_Plugin_Post_Type {
 			return $post_id;
 		}
 
-		if ( ! isset( $_POST[ 'starter_plugin_' . $this->post_type . '_noonce' ] ) || ! wp_verify_nonce( $_POST[ 'starter_plugin_' . $this->post_type . '_noonce' ], plugin_basename( dirname( Starter_Plugin()->plugin_path ) ) ) ) {
+		if ( ! isset( $_POST[ 'raffle_plugin_' . $this->post_type . '_noonce' ] ) || ! wp_verify_nonce( $_POST[ 'raffle_plugin_' . $this->post_type . '_noonce' ], plugin_basename( dirname( Raffle_Plugin()->plugin_path ) ) ) ) {
 			return $post_id;
 		}
 
@@ -323,7 +323,7 @@ class Starter_Plugin_Post_Type {
 	 */
 	public function enter_title_here ( $title ) {
 		if ( get_post_type() === $this->post_type ) {
-			$title = __( 'Enter the thing title here', 'starter-plugin' );
+			$title = __( 'Enter the thing title here', 'raffle' );
 		}
 		return $title;
 	}
@@ -338,14 +338,14 @@ class Starter_Plugin_Post_Type {
 		$fields = array();
 
 		$fields['url'] = array(
-			'name'        => __( 'URL', 'starter-plugin' ),
-			'description' => __( 'Enter a URL that applies to this thing (for example: http://domain.com/).', 'starter-plugin' ),
+			'name'        => __( 'URL', 'raffle' ),
+			'description' => __( 'Enter a URL that applies to this thing (for example: http://domain.com/).', 'raffle' ),
 			'type'        => 'url',
 			'default'     => '',
 			'section'     => 'info',
 		);
 
-		return apply_filters( 'starter_plugin_custom_fields_settings', $fields );
+		return apply_filters( 'raffle_plugin_custom_fields_settings', $fields );
 	}
 
 	/**

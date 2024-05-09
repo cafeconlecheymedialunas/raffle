@@ -4,17 +4,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Starter Plugin Taxonomy Class
+ * Raffle  Plugin Taxonomy Class
  *
  * Re-usable class for registering post type taxonomies.
  *
  * @package WordPress
- * @subpackage Starter_Plugin
+ * @subpackage Raffle_Plugin
  * @category Plugin
  * @author Matty
  * @since 1.0.0
  */
-class Starter_Plugin_Taxonomy {
+class Raffle_Plugin_Taxonomy {
 	/**
 	 * The post type to register the taxonomy for.
 	 * @access  private
@@ -72,10 +72,10 @@ class Starter_Plugin_Taxonomy {
 		$this->plural    = esc_html( $plural );
 
 		if ( '' === $this->singular ) {
-			$this->singular = __( 'Category', 'starter-plugin' );
+			$this->singular = __( 'Category', 'raffle' );
 		}
 		if ( '' === $this->plural ) {
-			$this->plural = __( 'Categories', 'starter-plugin' );
+			$this->plural = __( 'Categories', 'raffle' );
 		}
 
 		$this->args = wp_parse_args( $args, $this->get_default_args() );
@@ -114,21 +114,21 @@ class Starter_Plugin_Taxonomy {
 			'name'              => $this->plural,
 			'singular_name'     => $this->singular,
 			/* translators: taxonomy name, in plural */
-			'search_items'      => sprintf( __( 'Search %s', 'starter-plugin' ), $this->plural ),
+			'search_items'      => sprintf( __( 'Search %s', 'raffle' ), $this->plural ),
 			/* translators: taxonomy name, in plural */
-			'all_items'         => sprintf( __( 'All %s', 'starter-plugin' ), $this->plural ),
+			'all_items'         => sprintf( __( 'All %s', 'raffle' ), $this->plural ),
 			/* translators: taxonomy name, in singular */
-			'parent_item'       => sprintf( __( 'Parent %s', 'starter-plugin' ), $this->singular ),
+			'parent_item'       => sprintf( __( 'Parent %s', 'raffle' ), $this->singular ),
 			/* translators: taxonomy name, in singular */
-			'parent_item_colon' => sprintf( __( 'Parent %s:', 'starter-plugin' ), $this->singular ),
+			'parent_item_colon' => sprintf( __( 'Parent %s:', 'raffle' ), $this->singular ),
 			/* translators: taxonomy name, in singular */
-			'edit_item'         => sprintf( __( 'Edit %s', 'starter-plugin' ), $this->singular ),
+			'edit_item'         => sprintf( __( 'Edit %s', 'raffle' ), $this->singular ),
 			/* translators: taxonomy name, in singular */
-			'update_item'       => sprintf( __( 'Update %s', 'starter-plugin' ), $this->singular ),
+			'update_item'       => sprintf( __( 'Update %s', 'raffle' ), $this->singular ),
 			/* translators: taxonomy name, in singular */
-			'add_new_item'      => sprintf( __( 'Add New %s', 'starter-plugin' ), $this->singular ),
+			'add_new_item'      => sprintf( __( 'Add New %s', 'raffle' ), $this->singular ),
 			/* translators: taxonomy name, in singular */
-			'new_item_name'     => sprintf( __( 'New %s Name', 'starter-plugin' ), $this->singular ),
+			'new_item_name'     => sprintf( __( 'New %s Name', 'raffle' ), $this->singular ),
 			'menu_name'         => $this->plural,
 		);
 	}
